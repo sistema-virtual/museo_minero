@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museo en A-Frame</title>
+  <link rel="stylesheet" href="styles/estilo.css">    
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  
+  <script src="./historia/dirigentes.js"></script>
+  <script src="components/cuadro.js"></script>
+  <script src="components/camera.js"></script>
+  <script src="components/modelo.js"></script>
+  <script src="components/ambiente.js"></script>
+  <script src="components/museo.js"></script>
+  <script src="components/luz.js"></script>
+   
+  
+  
+</head>
+<body>
+    <!-- Modal HTML -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <p id="modal-text">
+      </p>
+      <span class="close">cerrar &times;</span>            
+    </div>
+  </div>
+
+  <a-scene museo luz>
+    <!-- Activos -->
+    <a-assets>
+      <a-asset-item id="federico" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/federico.glb"></a-asset-item>
+      <a-asset-item id="issac" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/issac.glb"></a-asset-item>
+      <a-asset-item id="filemon" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/filipo.glb"></a-asset-item>      
+      <a-asset-item id="ireneo" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/ireneo.glb"></a-asset-item>
+      <a-asset-item id="domitila" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/domitila.glb"></a-asset-item>
+      <a-asset-item id="cirilo" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/cirilo.glb"></a-asset-item>      
+      
+      <a-asset-item id="pedestal" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/pilar2.glb"></a-asset-item>
+      
+      <img id="text_federico" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/federico2.jpg">
+      <img id="text_cirilo" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/cirilo.jpg">
+      <img id="text_filemon" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/filemon.jpg">
+      <img id="text_ireneo" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/ireneo.jpg">
+      <img id="text_domitila" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/domitila.jpg">
+      <img id="text_issac" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/issaccamacho.jpg">
+      
+    </a-assets>
+
+    <!-- Entidades del museo -->
+    <a-entity museo></a-entity>
+
+    <!-- Cámara -->
+    <a-camera id="miCamara" camara>
+      <a-cursor></a-cursor>
+    </a-camera>
+  </a-scene>
+
+  <script>
+    // Script para manejar el modal
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
