@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Prueba</title>
+    <style>
+      .p {
+        width: 100%;
+        height: 700px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>FEDERICO ESCOBAR ZAPATA</h1>
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+    <model-viewer class="p"
+      bounds="tight"
+      enable-pan
+      src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/federico%20oficial.glb?v=1650755846079"
+      ar
+      ar-modes="webxr scene-viewer quick-look"                                                    
+      camera-controls
+      environment-image="neutral"
+      poster="poster.webp"
+      shadow-intensity="1.74"
+      exposure="0.45"
+      shadow-softness="0.81"
+      auto-rotate
+      camera-orbit="-126.6deg 52.84deg auto"
+    >
+      <button
+        class="Hotspot"
+        slot="hotspot-1"
+        data-position="-43.49253994378056m -204.10271256904372m 99.11430371163874m"
+        data-normal="-0.033088056597194986m 0.18261779557769775m 0.9826270509450487m"
+        data-visibility-attribute="visible"
+      >
+        <div class="HotspotAnnotation">Fererico Escobar Zapata</div>
+      </button>
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">View in your space</button>
+      <!--<div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png" />
+      </div>
+-->
+    </model-viewer>
+  </body>
+</html>
