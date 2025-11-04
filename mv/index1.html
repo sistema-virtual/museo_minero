@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>&lt;model-viewer&gt; template</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="&lt;model-viewer&gt; template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link type="text/css" href="./styles.css" rel="stylesheet" />
+    
+    <style>
+      .p {
+        width: 700px;
+        height: 700px;
+      }
+    </style>
+  </head>
+  <body>
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"
+    ></script>
+    
+    hola
+    <!-- <model-viewer> HTML element -->
+    <model-viewer class="p"
+      src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/escena1.glb"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      camera-controls
+      poster="poster.webp"
+      shadow-intensity="1.99"
+                  
+      camera-orbit="-8.142746deg 68.967deg 0.6179899m"
+      camera-target="-0.003m 0.0722m 0.0391m"
+      field-of-view="45deg" 
+      min-field-of-view="25deg"
+      max-field-of-view="45deg"
+      interpolation-decay="200"
+      min-camera-orbit="auto auto 5%"
+      
+      shadow-softness="0.67"
+    >
+       <button class="view-button" slot="hotspot-0" data-position="-0.0569m 0.0969m -0.1398m" data-normal="-0.5829775m 0.2863482m -0.7603565m" data-orbit="-50.94862deg 84.56856deg 0.06545582m" data-target="-0.04384604m 0.07348397m -0.1213202m">
+    The Fighters
+  </button> 
+      
+      <button
+        class="view-button"
+        slot="hotspot-1"
+        data-position="8.384435093369259m 1.2812091485065196m 1.0059259047464997m"
+        data-normal="0.11037546821391576m 0.37800071209133274m 0.9192022180537883m"
+        data-visibility-attribute="visible"
+              
+        data-orbit="-50.94862deg 84.56856deg 0.06545582m" data-target="-0.04384604m 0.07348397m -0.1213202m"
+      >
+        Cirilo
+      </button>
+      
+       
+       <button class="view-button" slot="hotspot-4" data-position="-0.1997m 0.11766m 0.0056m" data-normal="-0.4421014m 0.04410423m 0.8958802m" data-orbit="3.711166deg 92.3035deg 0.04335197m" data-target="-0.1879433m 0.1157161m -0.01563221m">
+    Hold Tight!
+  </button>  
+      
+      
+      <button
+        class="Hotspot"
+        slot="hotspot-5"
+        data-position="-5.564437551125484m 1.4179515207068187m 0.9723686026153189m"
+        data-normal="-0.0793563964902465m 0.4563757868720494m 0.8862413347914894m"
+        data-visibility-attribute="visible"
+      >
+        <div class="HotspotAnnotation">Federico</div>
+      </button>
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">View in your space</button>
+      <div id="ar-prompt">
+        <img src="ar_hand_prompt.png" />
+      </div>
+    </model-viewer>
+    <script src="script.js"></script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"
+    ></script>
+    
+    <script type="module">
+  const modelViewer2 = document.querySelector("#hotspot-camera-view-demo");
+  const annotationClicked = (annotation) => {
+    let dataset = annotation.dataset;
+    modelViewer2.cameraTarget = dataset.target;
+    modelViewer2.cameraOrbit = dataset.orbit;
+    modelViewer2.fieldOfView = '45deg';
+  }
+
+  modelViewer2.querySelectorAll('button').forEach((hotspot) => {
+    hotspot.addEventListener('click', () => annotationClicked(hotspot));
+  });
+</script>
+
+<style type="text/css">
+  .view-button {
+      background: #fff;
+      border-radius: 4px;
+      border: none;
+      box-sizing: border-box;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+      color: rgba(0, 0, 0, 0.8);
+      display: block;
+      font-family: Futura, Helvetica Neue, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      max-width: 128px;
+      overflow-wrap: break-word;
+      padding: 0.5em 1em;
+      position: absolute;
+      width: max-content;
+      height: max-content;
+      transform: translate3d(-50%, -50%, 0);
+    }
+</style>
+  </body>
+</html>
