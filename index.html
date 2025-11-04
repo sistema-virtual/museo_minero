@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museo en A-Frame</title>
+  <link rel="stylesheet" href="styles/estilo.css">    
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  
+
+
+  <script src="components/proximity-visibility.js"></script>
+
+  <script src="./historia/dirigentes.js"></script>
+  <script src="components/cuadro.js"></script>
+  <script src="components/camera.js"></script>
+  <script src="components/modelo.js"></script>
+  <script src="components/ambiente.js"></script>
+  <script src="components/museo.js"></script>
+  <script src="components/luz.js"></script>
+  <script src="components/holograma.js"></script>
+  <script src="components/keyboard-rotate.js"></script>
+  <script src="components/mostrar-posicion.js"></script>
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/gh/akbartus/A-Frame-Component-Postprocessing/dist/post-processing.min.js"></script>
+  
+  
+  
+</head>
+<body>
+    <!-- Modal HTML -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <p id="modal-text">
+      </p>
+      <span class="close">cerrar &times;</span>            
+    </div>
+  </div>
+
+  <a-scene 
+  museo luz>
+
+  
+         
+    <a-entity id="musica" sound="src: url(https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/mineros.mp3); loop: true; volume: 0.6"></a-entity>
+
+    <a-entity text="value: 🔊 Toca la pantalla para activar la música; color: white; align: center" 
+              position="0 2 -3" scale="2 2 2">
+    </a-entity>
+
+    <script>
+      // Reproduce la música al primer clic en cualquier parte del documento
+      document.body.addEventListener('click', function () {
+        const musica = document.querySelector('#musica');
+        if (musica && musica.components.sound) {
+          musica.components.sound.playSound();         
+        }
+      }, { once: true });
+    </script>
+
+    <!-- Activos -->
+    <a-assets>
+      <a-asset-item id="federico" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/federico.glb"></a-asset-item>
+      <a-asset-item id="issac" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/issac.glb"></a-asset-item>
+      <a-asset-item id="filemon" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/filipo.glb"></a-asset-item>      
+      <a-asset-item id="ireneo" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/ireneo.glb"></a-asset-item>
+      <a-asset-item id="domitila" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/domitila.glb"></a-asset-item>
+      <a-asset-item id="cirilo" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/cirilo.glb"></a-asset-item>      
+      
+      <a-asset-item id="pedestal" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/pilar2.glb"></a-asset-item>
+      
+      <img id="text_federico1" src="imagenes/federico1.png">
+      <img id="text_federico2" src="imagenes/federico2.png">
+      <img id="text_federico3" src="imagenes/federico3.png">
+      <img id="text_issac1" src="imagenes/issac1.png">
+      <img id="text_issac2" src="imagenes/issac2.png">
+      <img id="text_issac3" src="imagenes/issac3.png">
+      <img id="text_filemon1" src="imagenes/filemon1.png">
+      <img id="text_filemon2" src="imagenes/filemon2.png">
+      <img id="text_filemon3" src="imagenes/filemon3.png">
+      <img id="text_ireneo1" src="imagenes/ireneo1.png">      
+      <img id="text_ireneo2" src="imagenes/ireneo2.png">
+      <img id="text_cirilo1" src="imagenes/cirilo1.png">
+      <img id="text_cirilo2" src="imagenes/cirilo3.png">
+      <img id="text_domitila1" src="imagenes/domitila.png">      
+      <img id="text_domitila2" src="imagenes/domitila3.png">
+      <!--
+      <img id="text_federico" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/federico2.jpg">
+      <img id="text_cirilo" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/cirilo.jpg">
+      <img id="text_filemon" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/filemon.jpg">
+      <img id="text_ireneo" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/ireneo.jpg">
+      <img id="text_domitila" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/domitila.jpg">
+      <img id="text_issac" src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/issaccamacho.jpg">
+      -->
+    </a-assets>
+
+    <!-- Entidades del museo -->
+    <a-entity museo></a-entity>
+
+    <!-- Cámara -->
+    <a-entity id="rig">
+      <a-entity
+        id="cam"
+        camera
+        look-controls
+        wasd-controls
+        keyboard-rotate="speed:35"
+        mostrar-posicion
+        position="-5 1.6 5"
+        raycaster="objects: .interactable"  <!-- opcional: sólo apunta a objetos con esta clase -->
+      >
+        <!-- 👇 cursor visible en el centro -->
+        <a-entity
+          id="cursor"
+          cursor="fuse: false"
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.015"
+          material="color: white; shader: flat; opacity: 0.9"
+        ></a-entity>
+      </a-entity>
+    </a-entity>
+    
+    
+  </a-scene>
+
+  <script>
+    // Script para manejar el modal
+    var modal = document.getElementById("myModal");
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
