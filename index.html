@@ -102,7 +102,7 @@
     <a-entity museo></a-entity>
 
     <!-- Cámara -->
-    <a-entity id="rig" position="-5 1.6 5" auto-walk>
+    <a-entity id="rig" position="-5 1.6 5" touch-walk>
       <a-entity
         id="cam"
         camera        
@@ -140,58 +140,23 @@
       }
     }
   </script>
- <script>
-AFRAME.registerComponent('motion-move', {
-  schema: { sensitivity: { type: 'number', default: 0.002 } },
-
+<script>
+AFRAME.registerComponent('touch-walk', {
+  schema: { speed: { type: 'number', default: 0.03 } },
   init: function () {
-    this.lastZ = null;
-    this.velocityZ = 0;
-    this.direction = new THREE.Vector3();
     this.camera = document.querySelector('#cam');
-    this.enabled = true;
-
-    // Detectar movimiento físico del dispositivo
-    window.addEventListener('devicemotion', (e) => {
-      if (!this.enabled) return;
-
-      // Usamos aceleración en el eje Z (frontal/trasero)
-      const accZ = e.accelerationIncludingGravity.z;
-
-      if (this.lastZ !== null) {
-        // Diferencia de aceleración (velocidad)
-        const deltaZ = accZ - this.lastZ;
-        this.velocityZ = deltaZ;
-      }
-      this.lastZ = accZ;
-    });
+    this.direction = new THREE.Vector3();
+    this.walking = false;
+    document.body.addEventListener('touchstart', () => this.walking = true);
+    document.body.addEventListener('touchend', () => this.walking = false);
   },
-
-  tick: function (time, delta) {
-    if (!this.enabled) return;
+  tick: function () {
+    if (!this.walking) return;
     const rig = this.el;
-    const cam = this.camera;
-
-    // Si no hay datos, no hacemos nada
-    if (this.velocityZ === 0 || this.lastZ === null) return;
-
-    // Calcular dirección de avance según la mirada
-    cam.object3D.getWorldDirection(this.direction);
-    this.direction.y = 0; // evitar subir o bajar
+    this.camera.object3D.getWorldDirection(this.direction);
+    this.direction.y = 0;
     this.direction.normalize();
-
-    // Si el movimiento es hacia adelante (negativo en la mayoría de móviles)
-    if (this.velocityZ < -0.2) {
-      rig.object3D.position.addScaledVector(this.direction, this.data.sensitivity * delta);
-    }
-
-    // Si el movimiento es hacia atrás (positivo)
-    if (this.velocityZ > 0.2) {
-      rig.object3D.position.addScaledVector(this.direction, -this.data.sensitivity * delta);
-    }
-
-    // Frenar el movimiento poco a poco
-    this.velocityZ *= 0.9;
+    rig.object3D.position.addScaledVector(this.direction, this.data.speed);
   }
 });
 </script>
