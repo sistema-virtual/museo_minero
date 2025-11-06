@@ -3,101 +3,219 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prueba RA – Museo Virtual</title>
+  <title>Museo Virtual de Dirigentes Sindicales de Siglo XX</title>
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  
   <!-- Model Viewer -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <style>
-    body { background:#f8f9fa; }
-    header { background:#212529; color:#fff; text-align:center; padding:2rem 1rem; }
-    .model-viewer-container { background:#e9ecef; border-radius:.5rem; overflow:hidden; }
-    model-viewer { width:100%; height:340px; background:#f0f0f0; }
+    body {
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+    header {
+      background-color: #212529;
+      color: white;
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .intro {
+      max-width: 900px;
+      margin: 2rem auto;
+      text-align: justify;
+    }
+    .model-viewer-container {
+      background-color: #e9ecef;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      text-align: center;
+    }
+    model-viewer {
+      width: 100%;
+      height: 350px;
+      background-color: #f0f0f0;
+    }
+    footer {
+      background-color: #212529;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
+
 <body>
   <header>
-    <h2>Prueba de Modelos RA</h2>
-    <p>Verifica la estabilidad en modo Realidad Aumentada</p>
+    <h1>Museo Virtual de Dirigentes Sindicales de Siglo XX</h1>
+    <p>Desarrollado con tecnologías WebXR libres para la preservación y difusión de la historia sindical boliviana.</p>
   </header>
 
-  <main class="container py-4">
+  <main class="container mt-4">
+    <div class="intro">
+      <p>
+        Este museo virtual presenta a los dirigentes más destacados del movimiento minero y sindical boliviano de Siglo XX. 
+        Cada figura está acompañada de su modelo tridimensional interactivo, accesible también mediante Realidad Aumentada (RA).
+      </p>
+    </div>
 
-    <div class="row align-items-center mb-4">
+    <!-- Enlaces a versiones -->
+    <div class="text-center mb-5">
+      <a href="https://github.com/sistema-virtual/museo_minero" target="_blank" class="btn btn-dark m-1">
+        <i class="bi bi-github"></i> Repositorio en GitHub
+      </a>
+      <a href="https://sistema-virtual.github.io/museo_minero/three" target="_blank" class="btn btn-primary m-1">
+        Versión Three.js
+      </a>
+      <a href="https://sistema-virtual.github.io/museo_minero/mv" target="_blank" class="btn btn-success m-1">
+        Versión ModelViewer
+      </a>
+      <a href="https://sistema-virtual.github.io/museo_minero/" target="_blank" class="btn btn-warning m-1">
+        Versión A-Frame
+      </a>
+    </div>
+
+    <!-- Dirigentes -->
+    <div class="row align-items-center mb-5">
       <div class="col-md-6">
-        <h4>Modelo de referencia (Astronauta)</h4>
-        <p>Este modelo oficial de <code>model-viewer</code> debería funcionar correctamente en RA. 
-           Si se muestra estable, el visor está bien configurado en tu dispositivo.</p>
+        <h3>Federico Escobar Zapata</h3>
+        <p>Figura histórica del sindicalismo boliviano en los años 60. Fundó una poderosa organización marxista-leninista en Siglo XX y fue uno de los primeros caudillos mineros. Murió misteriosamente en 1966 tras ser internado por una fractura menor.</p>
       </div>
-      <div class="col-md-6 model-viewer-container">
-        <model-viewer
-          src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-          alt="Astronauta de prueba"
-          ar ar-modes="scene-viewer quick-look webxr"
-          ar-scale="fixed"
-          ar-placement="floor"
-          camera-controls auto-rotate
-          environment-image="neutral"
-          shadow-intensity="1"
-          disable-zoom
-          exposure="1">
-        </model-viewer>
+      <div class="col-md-6 model-viewer-container">        
+        <div class="col-md-6 model-viewer-container">
+            <model-viewer
+              src="https://github.com/sistema-virtual/museo_minero/blob/main/modelos/federico.glb"
+              alt="Modelo 3D de Federico Escobar"
+              ar ar-modes="scene-viewer quick-look webxr"
+              ar-scale="fixed"
+              ar-placement="floor"
+              camera-controls auto-rotate
+              environment-image="neutral"
+              shadow-intensity="1"
+              disable-zoom
+              exposure="1">
+            </model-viewer>
       </div>
     </div>
 
-    <hr>
-
-    <div class="row align-items-center mb-4">
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
       <div class="col-md-6">
-        <h4>Federico Escobar Zapata (prueba)</h4>
-        <p>Modelo original. Se agregó un parámetro <code>?v=2</code> para forzar la descarga limpia. 
-           Si parpadea o desaparece, reexporta el .glb aplicando transformaciones en Blender.</p>
+        <h3>Isaac Camacho Torrico</h3>
+        <p>Dirigente político y sindical de Siglo XX, luchó contra la dictadura de René Barrientos. Tras la masacre de San Juan fue arrestado y desaparecido por las fuerzas represivas del Estado boliviano en 1967.</p>
+      </div>
+      <div class="col-md-6 model-viewer-container">
+        <div class="col-md-6 model-viewer-container">
+            <model-viewer
+              src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/issac.glb"
+              alt="Modelo 3D de Issac Camacho"
+              ar ar-modes="scene-viewer quick-look webxr"
+              ar-scale="fixed"
+              ar-placement="floor"
+              camera-controls auto-rotate
+              environment-image="neutral"
+              shadow-intensity="1"
+              disable-zoom
+              exposure="1">
+            </model-viewer>
+      </div>       
+    </div>
+
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <h3>Filemón Escobar</h3>
+        <p>Secretario de Cultura del Sindicato de Mineros de Siglo XX, destacado dirigente de la FSTMB y la COB. Fue fundador e ideólogo del Movimiento al Socialismo (MAS). Falleció en 2017 víctima de cáncer de pulmón.</p>
       </div>
       <div class="col-md-6 model-viewer-container">
         <model-viewer
-          src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/federico.glb?v=2"
-          alt="Modelo 3D de Federico Escobar"
-          ar ar-modes="scene-viewer quick-look webxr"
-          ar-scale="fixed"
-          ar-placement="floor"
-          camera-controls auto-rotate
-          environment-image="neutral"
-          shadow-intensity="1"
-          disable-zoom
-          exposure="1">
-        </model-viewer>
+              src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/filipo.glb"
+              alt="Modelo 3D de Filemon Escobar"
+              ar ar-modes="scene-viewer quick-look webxr"
+              ar-scale="fixed"
+              ar-placement="floor"
+              camera-controls auto-rotate
+              environment-image="neutral"
+              shadow-intensity="1"
+              disable-zoom
+              exposure="1">
+        </model-viewer>       
       </div>
     </div>
 
-    <div class="row align-items-center mb-4">
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
       <div class="col-md-6">
-        <h4>Isaac Camacho Torrico (prueba)</h4>
-        <p>Prueba la estabilidad del modelo en RA. Si desaparece, vuelve a exportarlo desde Blender con
-           <strong>Apply Transform</strong> y sin cámaras ni luces.</p>
+        <h3>Ireneo Pimentel Rojas</h3>
+        <p>Secretario general del Control Obrero y constructor de la Plaza del Minero y el estadio María Barzola. Fue perseguido y exiliado por dictaduras militares. Falleció en 1978.</p>
       </div>
       <div class="col-md-6 model-viewer-container">
         <model-viewer
-          src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/issac.glb?v=2"
-          alt="Modelo 3D de Isaac Camacho"
-          ar ar-modes="scene-viewer quick-look webxr"
-          ar-scale="fixed"
-          ar-placement="floor"
-          camera-controls auto-rotate
-          environment-image="neutral"
-          shadow-intensity="1"
-          disable-zoom
-          exposure="1">
-        </model-viewer>
+              src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/ireneo.glb"
+              alt="Modelo 3D de Issac Camacho"
+              ar ar-modes="scene-viewer quick-look webxr"
+              ar-scale="fixed"
+              ar-placement="floor"
+              camera-controls auto-rotate
+              environment-image="neutral"
+              shadow-intensity="1"
+              disable-zoom
+              exposure="1">
+        </model-viewer>               
       </div>
     </div>
 
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6">
+        <h3>Domitila Barrios de Chungara</h3>
+        <p>Secretaria General del Comité de Amas de Casa del Distrito Minero Siglo XX. Luchó incansablemente contra las dictaduras militares. Fue apresada, torturada y exiliada. Falleció en 2012 víctima de cáncer.</p>
+      </div>
+      <div class="col-md-6 model-viewer-container">
+        <model-viewer
+              src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/domitila.glb"
+              alt="Modelo 3D de Issac Camacho"
+              ar ar-modes="scene-viewer quick-look webxr"
+              ar-scale="fixed"
+              ar-placement="floor"
+              camera-controls auto-rotate
+              environment-image="neutral"
+              shadow-intensity="1"
+              disable-zoom
+              exposure="1">
+        </model-viewer>               
+      </div>
+    </div>
+
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+      <div class="col-md-6">
+        <h3>Cirilo Jiménez Álvarez</h3>
+        <p>Dirigente sindical del Sindicato Mixto de Trabajadores Mineros de Siglo XX y fundador de la Central Obrera Regional del Norte de Potosí. Fue Vicerrector y Rector de la Universidad Nacional “Siglo XX”. Falleció en 2018.</p>
+      </div>
+      <div class="col-md-6 model-viewer-container">
+        <model-viewer
+              src="https://cdn.glitch.global/25ac2c89-9dc7-4d65-8977-00a3df60e85c/cirilo.glb"
+              alt="Modelo 3D de Issac Camacho"
+              ar ar-modes="scene-viewer quick-look webxr"
+              ar-scale="fixed"
+              ar-placement="floor"
+              camera-controls auto-rotate
+              environment-image="neutral"
+              shadow-intensity="1"
+              disable-zoom
+              exposure="1">
+        </model-viewer>              
+      </div>
+    </div>
   </main>
 
-  <footer class="text-center text-muted py-3">
-    © 2025 Prueba RA Museo Virtual
+  <footer>
+    2025 Museo Virtual - Universidad Nacional "Siglo XX" <br>
+    Desarrollado con tecnologías libres WebXR
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
