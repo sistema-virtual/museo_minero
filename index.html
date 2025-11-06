@@ -23,11 +23,11 @@
   <script src="components/mostrar-posicion.js"></script>
   
 
-  
+  <!--
   <script src="https://cdn.jsdelivr.net/gh/akbartus/A-Frame-Component-Postprocessing/dist/post-processing.min.js"></script>
-  <!--PAra movement extras-->
+  
   <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-
+-->
   
   
 </head>
@@ -102,17 +102,17 @@
     <a-entity museo></a-entity>
 
     <!-- Cámara -->
-    <a-entity id="rig" movement-controls="enabled: true">
+    <!--<a-entity id="rig" movement-controls="enabled: true">-->
+      <a-entity id="rig">
       <a-entity
         id="cam"
         camera
         look-controls
-        wasd-controls="enabled: true"
-        
+        wasd-controls="enabled: true"        
         keyboard-rotate="speed:35"
         mostrar-posicion
         position="-5 1.6 5"
-        raycaster="objects: .interactable"  <!-- opcional: sólo apunta a objetos con esta clase -->
+        raycaster="objects: .interactable"          
       >
         <!-- 👇 cursor visible en el centro -->
         <a-entity
