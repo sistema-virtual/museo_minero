@@ -102,7 +102,7 @@
     <a-entity museo></a-entity>
 
     <!-- Cámara -->
-    <a-entity id="rig" auto-walk>
+    <a-entity id="rig" position="-5 1.6 5" auto-walk>
       <a-entity
         id="cam"
         camera        
@@ -141,17 +141,25 @@
     }
   </script>
   <script>
-  // Avanza automáticamente cuando el usuario entra en modo VR (Cardboard)
+  // Componente para avanzar automáticamente en VR
   AFRAME.registerComponent('auto-walk', {
-    schema: { speed: { type: 'number', default: 0.05 } },
+    schema: { speed: { type: 'number', default: 0.3 } },
+    init: function () {
+      this.camera = document.querySelector('#cam');
+      this.direction = new THREE.Vector3();
+    },
     tick: function () {
       const scene = this.el.sceneEl;
+      const rig = this.el;
+      const cam = this.camera;
+
+      // Solo moverse cuando esté en modo VR (por ejemplo, Cardboard)
       if (scene.is('vr-mode')) {
-        const rig = this.el;
-        const camera = document.querySelector('#cam');
-        const direction = new THREE.Vector3();
-        camera.object3D.getWorldDirection(direction);
-        rig.object3D.position.addScaledVector(direction, this.data.speed);
+        cam.object3D.getWorldDirection(this.direction);
+        // Solo avanzar hacia adelante (ignorar vertical)
+        this.direction.y = 0;
+        this.direction.normalize();
+        rig.object3D.position.addScaledVector(this.direction, this.data.speed);
       }
     }
   });
